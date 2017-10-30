@@ -39,7 +39,16 @@ class ViewController: UIViewController {
             }
             else{
                 //Check Answer
-                massageLabel.text="You're wrong!! Try again."
+                if inputNumber! > answer{
+                    //larger than answer
+                    maxNumber = inputNumber!
+                    
+                }
+                else{
+                    //smaller than answer
+                    minNumber = inputNumber!
+                }
+                massageLabel.text="Try again!! Guess a number between \(minNumber) to \(maxNumber)"
             }
         }
     }
