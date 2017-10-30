@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GameKit
 
 class ViewController: UIViewController {
 
@@ -19,7 +20,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        //push the keyboard up
+        inputTextField.becomeFirstResponder()
+        // Make a Random number between 1 to 100
+        var answer=GKRandomSource.sharedRandom().nextInt(upperBound: 100)+1
     }
 
     override func didReceiveMemoryWarning() {
