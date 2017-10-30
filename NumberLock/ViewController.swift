@@ -12,6 +12,7 @@ import GameKit
 class ViewController: UIViewController {
     // Make a Random number between 1 to 100
     var answer=GKRandomSource.sharedRandom().nextInt(upperBound: 100)+1
+    var maxNumber=100,minNumber=1
     
     @IBOutlet weak var massageLabel: UILabel!
     @IBOutlet weak var inputTextField: UITextField!
@@ -20,22 +21,25 @@ class ViewController: UIViewController {
         print(answer)
         let inputText=inputTextField.text!
         let inputNumber=Int(inputText)
-        
+        inputTextField.text=""
         if inputNumber==nil{
             //Wrong Input
-            print("Wrong Input")
+            massageLabel.text="Wrong Input!! Guess a number between \(minNumber) to \(maxNumber)."
         }
         else{
             //Input Okay
-            if inputNumber!  > 100{
-                print("Too large")
+            if inputNumber!  > maxNumber{
+                massageLabel.text="Too large !! Guess a number between \(minNumber) to \(maxNumber)."
             }
-            else if inputNumber! < 1{
-                print("Too Small")
+            else if inputNumber! < minNumber{
+                massageLabel.text="Too small !! Guess a number between \(minNumber) to \(maxNumber)."
+            }
+            else if inputNumber! == answer{
+                massageLabel.text="You're right."
             }
             else{
                 //Check Answer
-                print("Check Answer")
+                massageLabel.text="You're wrong!! Try again."
             }
         }
     }
