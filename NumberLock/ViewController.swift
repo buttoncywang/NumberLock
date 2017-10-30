@@ -13,42 +13,52 @@ class ViewController: UIViewController {
     // Make a Random number between 1 to 100
     var answer=GKRandomSource.sharedRandom().nextInt(upperBound: 100)+1
     var maxNumber=100,minNumber=1
-    
+    var isOver=false
     @IBOutlet weak var massageLabel: UILabel!
     @IBOutlet weak var inputTextField: UITextField!
     
     @IBAction func makeAGuess(_ sender: Any) {
-        print(answer)
-        let inputText=inputTextField.text!
-        let inputNumber=Int(inputText)
-        inputTextField.text=""
-        if inputNumber==nil{
-            //Wrong Input
-            massageLabel.text="Wrong Input!! Guess a number between \(minNumber) to \(maxNumber)."
+        if isOver{
+            maxNumber=100
+            minNumber=1
+            massageLabel.text="Guess a number between \(minNumber) ~ \(maxNumber)"
+             answer=GKRandomSource.sharedRandom().nextInt(upperBound: 100)+1
+            isOver=false
         }
         else{
-            //Input Okay
-            if inputNumber!  > maxNumber{
-                massageLabel.text="Too large !! Guess a number between \(minNumber) to \(maxNumber)."
-            }
-            else if inputNumber! < minNumber{
-                massageLabel.text="Too small !! Guess a number between \(minNumber) to \(maxNumber)."
-            }
-            else if inputNumber! == answer{
-                massageLabel.text="You're right."
+            print(answer)
+            let inputText=inputTextField.text!
+            let inputNumber=Int(inputText)
+            inputTextField.text=""
+            if inputNumber==nil{
+                //Wrong Input
+                massageLabel.text="Wrong Input!! Guess a number between \(minNumber) to \(maxNumber)."
             }
             else{
-                //Check Answer
-                if inputNumber! > answer{
-                    //larger than answer
-                    maxNumber = inputNumber!
-                    
+                //Input Okay
+                if inputNumber!  > maxNumber{
+                    massageLabel.text="Too large !! Guess a number between \(minNumber) to \(maxNumber)."
+                }
+                else if inputNumber! < minNumber{
+                    massageLabel.text="Too small !! Guess a number between \(minNumber) to \(maxNumber)."
+                }
+                else if inputNumber! == answer{
+                    massageLabel.text="You're right, press guess to play again."
+                    isOver=true
                 }
                 else{
-                    //smaller than answer
-                    minNumber = inputNumber!
+                    //Check Answer
+                    if inputNumber! > answer{
+                        //larger than answer
+                        maxNumber = inputNumber!
+                        
+                    }
+                    else{
+                        //smaller than answer
+                        minNumber = inputNumber!
+                    }
+                    massageLabel.text="Try again!! Guess a number between \(minNumber) to \(maxNumber)"
                 }
-                massageLabel.text="Try again!! Guess a number between \(minNumber) to \(maxNumber)"
             }
         }
     }
