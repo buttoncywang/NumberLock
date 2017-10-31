@@ -16,13 +16,18 @@ class ViewController: UIViewController {
     var isOver=false
     @IBOutlet weak var massageLabel: UILabel!
     @IBOutlet weak var inputTextField: UITextField!
+    @IBOutlet weak var background: UIImageView!
     
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
     @IBAction func makeAGuess(_ sender: Any) {
         if isOver{
             maxNumber=100
             minNumber=1
             massageLabel.text="Guess a number between \(minNumber) ~ \(maxNumber)"
              answer=GKRandomSource.sharedRandom().nextInt(upperBound: 100)+1
+            background.image = UIImage(named: "BG")
             isOver=false
         }
         else{
@@ -44,6 +49,7 @@ class ViewController: UIViewController {
                 }
                 else if inputNumber! == answer{
                     massageLabel.text="You're right, press guess to play again."
+                    background.image = UIImage(named: "Finish")
                     isOver=true
                 }
                 else{

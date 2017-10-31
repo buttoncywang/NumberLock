@@ -29,7 +29,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48L-dd-G2i">
-                                <rect key="frame" x="152" y="414" width="70" height="53"/>
+                                <rect key="frame" x="152" y="400" width="70" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="Guess">
@@ -52,6 +52,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="background" destination="R3s-lQ-xcj" id="A7g-OQ-pW7"/>
                         <outlet property="inputTextField" destination="ohk-HW-6Up" id="0kL-fd-cRw"/>
                         <outlet property="massageLabel" destination="Dqd-Aa-kxx" id="k9h-dZ-JfH"/>
                     </connections>
